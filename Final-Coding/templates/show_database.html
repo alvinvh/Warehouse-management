@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %} Database {% endblock %}
+{% block content %}
+<style>
+ td {
+        width: 150px;
+        text-align: center;
+        border: 1px solid black;
+        padding: 5px;
+      }
+</style>
+
+
+<table>
+  <thead>
+    <tr>
+        <th>Item Barcode</th>
+        <th>Item Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if data != None %}
+     {% for row in list_item: %}
+
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </tbody>
+</table>
+
+<table>
+    <h1>Shelve Table</h1>
+  <thead>
+    <tr>
+        <th>Shelve Barcode</th>
+        <th>Shelve Name</th>
+        <th>Last User</th>
+        <th>Item Barcode</th>
+        <th>Item Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if data != None %}
+     {% for row in list_shelve: %}
+
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </tbody>
+</table>
+<form action="/update_db" method="post">
+        Select item/shelve to be deleted: <select name="barcode" id="barcode">
+        <option value="" selected="selected">Select a entry</option>
+        {% for i in dropdownlist: %}
+        <option value="{{i}}">{{i}}</option>
+        {% endfor%}
+        </select>
+        <div class="form-group">
+			<button class="btn btn-primary">Submit</button>
+		</div>
+		</form>
+<h1>{{message}}</h1>
+{% endblock %}

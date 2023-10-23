@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} Register Item {% endblock %}
+{% block content %}
+<h1>Register an Item</h1>
+<form action="/auto_scan_input" method="post">
+		<h5>{{"Enter name, quantity and type for barcode {}".format(barcode)}}</h5>
+        <div class="form-group">
+            <input class="form-control" type="text" name="item_name" placeholder="Item name">
+        </div>
+        <h5>Please select the type of input</h5>
+        <input type="radio" name="table" value="item"> Item
+        <input type="radio" name="table" value="shelve"> Shelve<br>
+        <input type="hidden" name="barcode" value={{ barcode }}>
+		<div class="form-group">
+			<button class="btn btn-primary">Register</button>
+            </div>
+</form>
+
+{% endblock %}

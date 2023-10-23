@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Scan Item {% endblock %}
+{% block content %}
+<h1>Item {{barcode}} action</h1>
+<form action="/action" method="post">
+    <input type="hidden" name="barcode" value={{ barcode }}>
+    <input type="hidden" name="table" value={{ table }}>
+    <div class="form-group">
+			<button class="btn btn-primary" name = "action" value = "in" type = "submit">IN</button>
+            </div>
+    <div class="form-group">
+			<button class="btn btn-primary" name = "action" value = "out" type = "submit">OUT</button>
+            </div>
+    <div class="form-group">
+			<button class="btn btn-primary" name = "action" value = "location" type = "submit">LOCATION</button>
+            </div>
+</form>
+<h3>{{ message }}</h3>
+
+{% endblock %}

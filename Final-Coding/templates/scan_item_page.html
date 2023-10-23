@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %} Scan Item {% endblock %}
+{% block content %}
+<h1>Scan an Item</h1>
+<form action="/manual_scan" method="post">
+		<h5>Enter barcode manually or scan</h5>
+		<div class="form-group">
+            Select Name: <select name="name" id="name">
+        <option value="" selected="selected">Select a name</option>
+        {% for i in list_name: %}
+        <option value="{{i}}">{{i}}</option>
+        {% endfor%}
+        </select>
+        </div>
+        <div class="form-group">
+               Select Barcode: <select name="barcode" id="barcode">
+        <option value="" selected="selected">Select a barcode</option>
+        {% for i in list_barcode: %}
+        <option value="{{i}}">{{i}}</option>
+        {% endfor%}
+        </select>
+        </div>
+		<div class="form-group">
+			<button class="btn btn-primary">Find Manually</button>
+            <input type="hidden" name="type" value={{ type }}>
+            </div>
+		</form>
+
+<form action="/auto_scan" method="post">
+    <div class="form-group">
+			<button class="btn btn-primary">Scan</button>
+        <input type="hidden" name="type" value={{ type }}>
+            </div>
+</form>
+<h3>{{ message }}</h3>
+
+{% endblock %}

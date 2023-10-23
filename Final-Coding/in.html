@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Scan Item {% endblock %}
+{% block content %}
+<h1>Shelve-IN</h1>
+<form action="/action_in" method="post">
+		<h5>Please select {{name}}</h5>
+		<div class="form-group">
+            Select Name: <select name="selection" id="selection">
+        <option value="" selected="selected">Select a {{name}}</option>
+        {% for i in dropdownlist: %}
+        <option value="{{i}}">{{i}}</option>
+        {% endfor%}
+        </select>
+        </div>
+		<div class="form-group">
+			<button class="btn btn-primary">Shelve-IN</button>
+            <input type="hidden" name="type" value={{ name }}>
+            <input type="hidden" name="barcode" value={{ barcode }}>
+            </div>
+		</form>
+<form action="/action_in_auto" method="post">
+    <div class="form-group">
+    <input type="hidden" name="type" value={{ name }}>
+    <input type="hidden" name="barcode" value={{ barcode }}>
+    <button class="btn btn-primary">Shelve-IN-AUTO</button>
+    </div>
+</form>
+<h3>{{ message }}</h3>
+
+{% endblock %}
